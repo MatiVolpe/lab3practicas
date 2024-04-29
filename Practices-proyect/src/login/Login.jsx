@@ -26,8 +26,8 @@ const Login = ({ }) => {
 
     const changeTextHandler = (e) => {
         setTextInput(e.target.value);
-        setContainsLetter(ifContainsLetter(e.target.value));
-        if(ifContainsLetter(e.target.value))
+        setContainsLetter(ifContainsLetter(e.target.value.charAt(e.target.value.length - 1)));
+        if(ifContainsLetter(e.target.value.charAt(e.target.value.length - 1)))
         {
             alert("Por favor, ¡Nombres de usuario sin la letra o!");
         }
