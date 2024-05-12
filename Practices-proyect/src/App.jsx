@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import './App.css';
+import ToDoList from './toDoList/ToDoList';
+
+const Tasks = [
+  {id: 1, name:"Ejemplo", completed: false},
+];
 
 function App() {
-
   return (
     <div>
-
+      <ToDoList initialChores={Tasks} />
     </div>
   )
 }
