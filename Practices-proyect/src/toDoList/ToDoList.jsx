@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, TextField } from '@mui/material';
+import { Button, Checkbox, TextField, Tooltip } from '@mui/material';
 import ListGroup from 'react-bootstrap/ListGroup';
+import './ToDoList.css'
 
 function TodoList({ initialChores }) {
     const [chores, setChores] = useState(initialChores);
@@ -13,7 +14,7 @@ function TodoList({ initialChores }) {
         }
 
         const newChore = {
-            id: chores.length + 1,
+            id: Math.random(),
             name: newTaskName.trim(),
             completed: false,
         };
@@ -28,6 +29,7 @@ function TodoList({ initialChores }) {
     const toggleTaskCompletion = (id) => {
         const updatedChores = chores.map((chore) =>
             chore.id === id ? { ...chore, completed: !chore.completed } : chore
+        
         );
         setChores(updatedChores);
     };
@@ -44,8 +46,12 @@ function TodoList({ initialChores }) {
             <ListGroup variant="flush">
                 {chores.map((item) => (
                     <ListGroup.Item key={item.id}>
-                        {item.name}
-                        <Checkbox onChange={ () => toggleTaskCompletion(item.id)} />
+                        <span className={item.completed ? 'tachado' : ''}>
+                            {item.name}
+                        </span>
+                        <Tooltip title="Marcar como completada">
+                            <Checkbox checked={item.completed} onChange={ () => toggleTaskCompletion(item.id)} />
+                        </Tooltip>
                     </ListGroup.Item>
                 ))}
             </ListGroup>
