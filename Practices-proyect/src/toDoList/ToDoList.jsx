@@ -55,14 +55,16 @@ function TodoList({ initialChores }) {
                     </ListGroup.Item>
                 ))}
             </ListGroup>
-
-            <Button variant="contained" onClick={addChore}>
-                Agregar Tarea
-            </Button>
-
-            <Button variant="contained" onClick={deleteCompletedTasks}>
-                Borrar tareas completadas
-            </Button>
+            <div>
+                <Button variant="contained" onClick={addChore} style={{ marginRight: '10px' }}
+>
+                    Agregar Tarea
+                </Button>
+            
+                <Button variant="contained" onClick={deleteCompletedTasks}>
+                    Borrar tareas completadas
+                </Button>
+            </div>
         </div>
     );
 }
